@@ -5,6 +5,7 @@ const Glob = require('./glob.js');
 const npm = require('./npm.js');
 const devServer = require('./dev-server.js');
 const {splitCmdLineArgs, serial} = require('./utils.js');
+const version = require('./package.json').version;
 
 /*
  * builtin tasks cannot be overwritten by the user
@@ -12,8 +13,8 @@ const {splitCmdLineArgs, serial} = require('./utils.js');
 module.exports = {
 	// workspace related (i.e. global) tasks
 	help(ws, project, args) {
-		console.log("Qute Builder v0.9.0");
-		console.log("Usage: qub task [project] [ ... task_args]");
+		console.log("Workspaces for npm v"+version);
+		console.log("Usage: ws task [project] [ ... task_args]");
 	},
 	cmds(ws, project, args) {
 		/*

@@ -1,6 +1,6 @@
 {
   "name": "ws4npm",
-  "version": "0.9.1",
+  "version": "0.9.3",
   "author": "Bogdan Stefanescu <bogdan@quandora.com>",
   "license": "MIT",
   "description": "Workspaces for npm: a multi-package build manager",

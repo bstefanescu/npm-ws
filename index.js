@@ -11,7 +11,7 @@ const start = now();
 const promise = Workspace.run(process.cwd(), process.argv.slice(2));
 
 if (!promise) {
-	console.log('No qub workspace found!');
+	console.log('No workspace found!');
 	process.exit(1);
 }
 
