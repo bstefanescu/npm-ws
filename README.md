@@ -14,6 +14,10 @@ You can use this tool to easily build, test and publish your monorepo javascript
 * Built-in integration with [rollup](https://rollupjs.org) and [mocha](https://mochajs.org)
 * Integrated development server (with live reload support over multiple dependent packages)
 
+## Prerequisites
+
+[Node](https://nodejs.org) version 10 is required.
+
 ## Usage
 
 To install:
