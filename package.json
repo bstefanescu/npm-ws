@@ -10,6 +10,14 @@
     "ws": "./bin/ws"
   },
   "preferGlobal": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bstefanescu/ws4npm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bstefanescu/ws4npm/issues"
+  },
+  "homepage": "https://github.com/bstefanescu/ws4npm#readme",
   "dependencies": {
     "chokidar": "^3.3.0",
     "livereload": "^0.8.2",
