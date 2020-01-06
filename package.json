@@ -1,11 +1,10 @@
 {
   "name": "ws4npm",
-  "version": "0.9.0",
-  "keywords": [],
+  "version": "0.9.1",
   "author": "Bogdan Stefanescu <bogdan@quandora.com>",
   "license": "MIT",
-  "description": "Qute monorepo builder",
-  "keywords": ["build", "monorepo", "mono", "multi", "repository", "dev", "development", "manage", "package", "project", "workspace", "npm", "test", "publish", "version", "watch", "mocha", "rollup", "lerna"],
+  "description": "Workspaces for npm: a multi-package build manager",
+  "keywords": ["workspace", "ws", "build", "monorepo", "mono", "multi", "repository", "repo", "dev", "development", "manage", "package", "project", "npm", "test", "publish", "version", "watch", "mocha", "rollup", "lerna"],
   "main": "index.js",
   "bin": {
     "ws": "./bin/ws"
