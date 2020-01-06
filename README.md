@@ -1,10 +1,10 @@
-# [Qute](https://qutejs.org) monorepo builder.
+# ws4npm - Workspaces for npm
 
-Qub is a monorepo package manager for [npm](https://npmjs.org).
+A monorepo package manager for [npm](https://npmjs.org).
 
-You can use it to easily build, test and publish your monorepo javascript project that contains multiple interdependent npm packages inside a single source repository.
+You can use this tool to easily build, test and publish your monorepo javascript product that contains multiple interdependent npm packages inside a single source repository.
 
-Qub was initially designated to manage the development life cycle of [Qute](https://qutejs.org).
+`ws4npm` was initially created to manage the development life cycle of **[Qute](https://qutejs.org)**.
 
 ## Features
 
@@ -19,14 +19,14 @@ Qub was initially designated to manage the development life cycle of [Qute](http
 To install:
 
 ```
-npm install -g qub
+npm install -g ws4npm
 ```
 
 Then add a `build` entry in your `package.json` to define your repository layout, custom tasks and other build configuration.
 
 The root package of a monorepo product is not publishable (you must use `private: true` in your root package.json). The root package only serves as a container for publishable packages.
 
-The root package is the **workspace**. An workspace can contain one or more npm packages (or **projects**). A workspace is respnsible to run tasks on its projects.
+The root package is the **workspace**. The workspace can contain one or more npm packages (or **projects**). A workspace is respnsible to run tasks on its projects.
 
 Tasks are of two types:
 1. global tasks - which runs at workspace level. Example: `help`, `projects` etc.
@@ -36,7 +36,7 @@ Tasks are of two types:
 **Syntax:**
 
 ```
-qub [project] [task] [task arguments ...]
+ws [project] [task] [task arguments ...]
 ```
 
 **Arguments:**
@@ -46,7 +46,7 @@ qub [project] [task] [task arguments ...]
 2. **task** - an optional task. If not specified the `help` task will be run.
 3. All the other arguments will be passed to the task as arguments.
 
-When running `qub` inside a project directory it will run the tasks only on that project (as if the project argument was given)
+When running `ws` inside a project directory it will run the tasks only on that project (as if the project argument was given)
 
 ## Tasks
 
@@ -62,7 +62,7 @@ Dependency projects will be linked in the `node_modules` directory of the depend
 You must use this command to initialize the dependencies and **not** `npm install`.
 
 ```
-qub install
+ws install
 ```
 
 ### uninstall
@@ -70,7 +70,7 @@ qub install
 Remove all generated `node_modules` directories
 
 ```
-qub uninstall
+ws uninstall
 ```
 
 ### shell
@@ -80,13 +80,13 @@ Run a shell command against all the projects.
 **Example:**
 
 ```
-qub shell ls -1
+ws shell ls -1
 ```
 
 will list the content of each project
 
 ```
-qub subproject shell ls -1
+ws subproject shell ls -1
 ```
 
 will list the content of the given `subproject`
@@ -96,7 +96,7 @@ will list the content of the given `subproject`
 Run the build (against all projects). This task requires some additional configuration. If you are using rollup as the bundler - you only need to specify a rollup config file (or one per project type). If you don't use rollup then you need to write a script to integrate the bundler.
 
 ```
-qub build
+ws build
 ```
 
 ### test
@@ -104,7 +104,7 @@ qub build
 Run the tests (against all projects). This task requires some additional configuration. By default mocha will be used as the tester. If you want to use another tester then you need to write an integration script.
 
 ```
-qub test
+ws test
 ```
 
 ### run
@@ -116,13 +116,13 @@ Each task will be run on each of the workspace projects. After a task completes 
 **Example:**
 
 ```
-qub run build test
+ws run build test
 ```
 
 To specify arguments for a task in the run list use quotes or double quotes:
 
 ```
-qub run "build prod" test
+ws run "build prod" test
 ```
 
 ### version
@@ -130,7 +130,7 @@ qub run "build prod" test
 Update version of all projects (including workspace package.json) to the given version.
 
 ```
-qub version 'version'
+ws version 'version'
 ```
 where version is:
 
@@ -148,7 +148,7 @@ The arguments passed to publish task are passed down to `npm publish`.
 **Example:**
 
 ```
-qub publish --dry-run
+ws publish --dry-run
 ```
 
 ### start
@@ -158,7 +158,7 @@ Start the development server. Usually used in conjunction with `watch`.
 **Example:**
 
 ```
-qub start
+ws start
 ```
 ### watch
 
@@ -167,7 +167,7 @@ Watch for file changes and rebuild. Usually used in conjunction with `start`
 **Example:**
 
 ```
-qub run "build dev" watch start
+ws run "build dev" watch start
 ```
 
 ### projects
@@ -175,7 +175,7 @@ qub run "build dev" watch start
 List the projects in the workspace
 
 ```
-qub projects
+ws projects
 ```
 
 ### help
@@ -183,7 +183,7 @@ qub projects
 Display the help screen.s
 
 ```
-qub help
+ws help
 ```
 
 ### link
@@ -191,7 +191,7 @@ qub help
 Link dependent projects
 
 ```
-qub link
+ws link
 ```
 
 ### unlink
@@ -199,7 +199,7 @@ qub link
 Remove dependent project links
 
 ```
-qub unlink
+ws unlink
 ```
 
 ### rm

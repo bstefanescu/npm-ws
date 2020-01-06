@@ -1,5 +1,5 @@
 {
-  "name": "qub",
+  "name": "ws4npm",
   "version": "0.9.0",
   "keywords": [],
   "author": "Bogdan Stefanescu <bogdan@quandora.com>",
@@ -8,7 +8,7 @@
   "keywords": ["build", "monorepo", "mono", "multi", "repository", "dev", "development", "manage", "package", "project", "workspace", "npm", "test", "publish", "version", "watch", "mocha", "rollup", "lerna"],
   "main": "index.js",
   "bin": {
-    "qub": "./bin/qub"
+    "ws": "./bin/ws"
   },
   "preferGlobal": true,
   "dependencies": {
