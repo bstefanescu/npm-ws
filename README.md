@@ -1,10 +1,10 @@
-# ws4npm - Workspaces for npm
+# npm-ws - Workspaces for npm
 
-A monorepo package manager for [npm](https://npmjs.org).
+A multi-package project manager for [npm](https://npmjs.org).
 
-You can use this tool to easily build, test and publish your monorepo javascript product that contains multiple interdependent npm packages inside a single source repository.
+This is a tool to easily build, test and publish your javascript products that contains multiple inter-dependent npm packages inside a single source repository.
 
-`ws4npm` was initially created to manage the development life cycle of **[Qute](https://qutejs.org)**.
+`npm-ws` was initially created to manage the development life cycle of **[Qute](https://qutejs.org)**.
 
 ## Features
 
@@ -23,7 +23,7 @@ You can use this tool to easily build, test and publish your monorepo javascript
 To install:
 
 ```
-npm install -g ws4npm
+npm install -g npm-ws
 ```
 
 Then add a `build` entry in your `package.json` to define your repository layout, custom tasks and other build configuration.

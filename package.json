@@ -1,6 +1,6 @@
 {
-  "name": "ws4npm",
-  "version": "0.9.3",
+  "name": "npm-ws",
+  "version": "0.9.0",
   "author": "Bogdan Stefanescu <bogdan@quandora.com>",
   "license": "MIT",
   "description": "Workspaces for npm: a multi-package build manager",
@@ -12,12 +12,12 @@
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bstefanescu/ws4npm.git"
+    "url": "git+https://github.com/bstefanescu/npm-ws.git"
   },
   "bugs": {
-    "url": "https://github.com/bstefanescu/ws4npm/issues"
+    "url": "https://github.com/bstefanescu/npm-ws/issues"
   },
-  "homepage": "https://github.com/bstefanescu/ws4npm#readme",
+  "homepage": "https://github.com/bstefanescu/npm-ws#readme",
   "dependencies": {
     "chokidar": "^3.3.0",
     "livereload": "^0.8.2",
