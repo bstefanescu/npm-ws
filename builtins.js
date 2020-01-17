@@ -41,7 +41,13 @@ module.exports = {
 		function rebuild(project, event, path, stats) {
 			console.log('Project', project.name, 'changed. Rebuilding.');
 			if(project !== rootProject) {
-				Promise.resolve(project.build(args)).then(rootProject.build(args));
+				//TODO: rebuild all required projects depending on project
+				var tasks = [project, rootProject].map(function(project) {
+					return function() {
+						return project.build(args);
+					}
+				});
+				return serial(tasks)();
 			} else {
 				project.build(args);
 			}
