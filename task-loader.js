@@ -51,7 +51,7 @@ TaskLoader.prototype = {
 			fs.readdirSync(scriptsDir).forEach(file => {
 				if (file.endsWith('.js')) {
 					var name = file.substring(0, file.length-3);
-					this.tasks[name] = require(fspath.join(scriptsDir, file));
+					this.tasks[name] = createScriptTask(fspath.join(scriptsDir, file));
 				}
 			});
 		}
@@ -81,5 +81,15 @@ function LazyRunner(tasks, cmd, args) {
 	}
 }
 
+// tasks defined in scriopts must not be loaded when registered since they may use dependencies
+// which may not be installed when the task loader is created
+// (for example at the first load before running ws install)
+function createScriptTask(file) {
+	var task;
+	return function ScriptTask(ws, project, args) {
+		if (!task) task = require(file);
+		return task(ws, project, args);
+	}
+}
 
 module.exports = TaskLoader;
