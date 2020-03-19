@@ -21,7 +21,6 @@ const ProjectBase = {
 	},
 	linkRequiredProject(project) {
 		const target = this.file('node_modules', project.name);
-		//console.log('make link', target);
 		if (!fs.existsSync(target)) {
 			mkdirp.sync(fspath.dirname(target));
 			fs.symlinkSync(project.root, target);
@@ -44,7 +43,9 @@ const ProjectBase = {
 			const pkg = new Package(this.file('package.json')).snapshot();
 			let removed = false;
 			this.requires.forEach(project => {
-				if (pkg.removeDep(project.name)) removed = true;
+				if (pkg.removeDep(project.name)) {
+					removed = true;
+				}
 			});
 			if (removed) {
 				const bak = pkg.backup();
