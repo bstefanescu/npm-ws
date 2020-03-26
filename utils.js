@@ -1,3 +1,5 @@
+const os = require('os');
+
 var CAMEL_TO_KEBAB_RX = /([\$A-Za-z0-9])([A-Z])/g;
 
 function camelToKebab(value) {
@@ -107,7 +109,15 @@ function getProjectDeps(projects, pkg) {
 	return null;
 }
 
+function expandUserDir(path) {
+	if (path.startsWith('~')) {
+		return os.homedir() + (path.substring(1) || '');
+	}
+	return path;
+}
 
 module.exports = {
-	expandVars, kebabToCamel, kebabToPascal, camelToKebab, serial, splitCmdLineArgs, debounced, getProjectDeps
+	expandVars, kebabToCamel, kebabToPascal, camelToKebab, serial, splitCmdLineArgs, debounced, getProjectDeps, expandUserDir
 }
+
+

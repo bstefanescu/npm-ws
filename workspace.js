@@ -10,7 +10,7 @@ const Project = require('./project.js');
 const Builder = require('./builder.js');
 const Tester = require('./tester.js');
 const devServer = require('./dev-server.js');
-const { expandVars, serial, splitCmdLineArgs, getProjectDeps } = require('./utils.js');
+const { expandVars, serial, splitCmdLineArgs, getProjectDeps, expandUserDir } = require('./utils.js');
 
 const GLOBAL_TASKS = new Set([
 	"help",
@@ -251,6 +251,19 @@ const WorkspaceProto = {
 				}
 			} else {
 				config.root = defaultRoot;
+			}
+			// https
+			if (config.https) {
+				var https = config.https;
+				if (https.key) {
+					https.key = fs.readFileSync(expandUserDir(https.key));
+				}
+				if (https.cert) {
+					https.cert = fs.readFileSync(expandUserDir(https.cert));
+				}
+				if (https.ca) {
+					https.ca = fs.readFileSync(expandUserDir(https.ca));
+				}
 			}
 		}
 		devServer.start(config);
