@@ -227,6 +227,7 @@ const WorkspaceProto = {
 	},
 
 	startDevServer(project, name) {
+		process.chdir(this.root); // make sure we are in worskapce root
 		let defaultRoot = project ? project.root : this.root;
 		let config, root;
 		if (!name) {
