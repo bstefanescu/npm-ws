@@ -1,6 +1,6 @@
 {
   "name": "npm-ws",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "author": "Bogdan Stefanescu <bogdan@quandora.com>",
   "license": "MIT",
   "description": "Workspaces for npm: a multi-package build manager",
@@ -28,7 +28,7 @@
     "rimraf": "^3.0.0"
   },
   "optionalDependencies": {
-    "mocha": "^6.2.2",
-    "rollup": "^1.27.8"
+    "mocha": "^8.3.2",
+    "rollup": "^2.47.0"
   }
 }
