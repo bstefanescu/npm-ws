@@ -1,4 +1,5 @@
 const fspath = require('path');
+const process = require('process');
 
 /*
 * Lazy config factory reference.
@@ -53,6 +54,10 @@ function extractConfigName(args) {
 
 Builder.prototype = {
 	build(ws, project, args) {
+		// we need to change the directory to the project dir
+		// since some builds assumes the build is executed inside the package directory
+		process.chdir(project.root);
+
 		let pkgBuild = project.pkg.build;
 		let configName = extractConfigName(args);
 		if (!configName) {

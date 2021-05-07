@@ -1,6 +1,7 @@
 const { spawnSync } = require('child_process');
 const fs = require('fs');
 const fspath = require('path');
+const process = require('process');
 
 const ProjectBase = require('./project-base.js');
 const Glob = require('./glob.js');
@@ -137,7 +138,11 @@ const WorkspaceProto = {
 			project = this.projectMap[ctxProject];
 		}
 
-		var promise;
+		if (project) {
+			// run in project root
+			process.chdir(project.root);
+		}
+
 		var task = this.taskLoader.getTaskRunner(taskName, args);
 		if (!task) throw new Error('Task not found: '+taskName);
 		if (GLOBAL_TASKS.has(taskName)) { // run in ws context
