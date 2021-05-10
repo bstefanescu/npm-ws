@@ -5,11 +5,16 @@ const Glob = require('./glob.js');
 const { splitCmdLineArgs } = require('./utils.js');
 
 function Tester(ws) {
+	this.taskName;
 	this.cmd;
 	this.args;
 	let defaultTesterScript = join(__dirname, 'impl/mocha-tester.js');
 	let testConfig = ws.config.test;
-	if (testConfig) {
+	if (typeof testConfig === 'string' && testConfig.startsWith('@')) {
+		// use a registered task as the test command
+		this.taskName = testConfig.substring(1);
+
+	} else if (testConfig) {
 		if (testConfig.tester) {
 			var cmdLine = splitCmdLineArgs(testConfig.tester);
 			this.cmd = cmdLine.shift();
@@ -50,6 +55,15 @@ function runTests(cmd, args, cwd, testFiles) {
 
 Tester.prototype = {
 	test: function(ws, project, args) {
+		if (this.taskName) {
+			// the builtin test task was replaced by a custom task
+			let task = ws.tasks[this.taskName];
+			if (!task) {
+				throw new Error(`The 'test' task was repalced with a custom task named ${this.taskName} but this task was not registered`);
+			}
+			task(ws, project, args);
+			return;
+		}
 		if (!this.cmd) {
 			console.log("Skiping project", project.name, "- No tester declared");
 			return;
